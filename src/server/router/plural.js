@@ -256,7 +256,7 @@ module.exports = (db, name, opts) => {
   function create(req, res, next) {
     let resource
     if (opts._isFake) {
-      const id = db.get(name).createId().value()
+      const id = db.get(name).createId(undefined,name + "_id").value()
       resource = { ...req.body, id }
     } else {
       resource = db.get(name).insert(req.body).value()
