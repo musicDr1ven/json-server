@@ -90,14 +90,7 @@ module.exports = (db, opts) => {
 
     router.render(req, res)
   })
-  router.use((req, res) => {
-    db.forEach((value, key) => {
-      if (req.url.includes(`/${key}/`)) {
-        router.db._.id = `${key}_id`;
-      }
-    });
 
-  })
 
   router.use((err, req, res, next) => {
     console.error(err.stack)
