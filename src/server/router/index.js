@@ -73,6 +73,7 @@ module.exports = (db, opts) => {
     // if (!_.isObject(source)) {
     //   sourceMessage = `in ${source}`
     // }
+    db[key]._.id = `${key}_id`;
 
     const msg =
       `Type of "${key}" (${typeof value}) ${sourceMessage} is not supported. ` +
