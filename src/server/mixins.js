@@ -41,7 +41,7 @@ function getRemovable(db, opts) {
 // Used to override lodash-id's createId with utils.createId
 function createId(coll, idProp) {
   const _ = this
-  const idProperty = _.__id()
+  const idProperty = idProp ? idProp : _.__id()
   if (_.isEmpty(coll)) {
     return 1
   } else {
