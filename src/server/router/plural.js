@@ -256,13 +256,9 @@ module.exports = (db, name, opts) => {
   function create(req, res, next) {
     let resource
     if (opts._isFake) {
-      const coll = db.get(name);
-      let id = 1;
-      if (coll.length > 0) {
-        id = _.maxBy(coll, function (o) { return o[name + "_id"]; });
-      }
-    
-      resource = { ...req.body, [`${name}_id`]: id }
+      const coll = db.get(name).createId().value()
+
+      resource = { ...req.body, id }
     } else {
       resource = db.get(name).insert(req.body).value()
     }
